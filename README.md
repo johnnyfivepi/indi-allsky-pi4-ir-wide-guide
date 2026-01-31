@@ -288,6 +288,127 @@ At this point:
 
 ---
 
+## Camera verification (rpicam / libcamera)
+
+Before installing indi-allsky, we want to confirm that:
+
+- the camera is physically detected
+- the camera stack is working
+- the system can successfully capture an image headlessly
+
+This step is about confidence, not perfection.
+
+> **Command name note (modern Raspberry Pi OS)**
+>
+> On current Raspberry Pi OS releases, the camera demo tools are named
+> `rpicam-*` (for example, `rpicam-hello` and `rpicam-still`).
+>
+> Older guides may refer to `libcamera-*` commands — they refer to the same
+> underlying camera stack.
+
+---
+
+### Step 1: Power down and connect the camera
+
+If your Pi is currently on, shut it down first:
+
+~~~bash
+sudo shutdown now
+~~~
+
+Wait until the activity light stops blinking.
+
+Now:
+
+1. Disconnect power from the Pi
+2. Connect the Raspberry Pi Camera Module 3 Wide IR
+   - Make sure the ribbon cable is fully seated
+   - On a Pi 4, the blue side of the ribbon should face the Ethernet/USB ports
+3. Reconnect power and let the Pi boot
+
+Give it about 30–60 seconds, then reconnect via SSH.
+
+---
+
+### Step 2: Check that the camera is detected
+
+Once logged in over SSH, run:
+
+~~~bash
+rpicam-hello --list-cameras
+~~~
+
+If the camera is detected, you should see output similar to:
+
+~~~
+Available cameras
+-----------------
+0 : imx708_wide_noir [4608x2592] (...)
+~~~
+
+The exact text may differ. The important thing is that **a camera is listed**.
+
+![Terminal output showing IMX708 camera detected](docs/images/08-rpicam-list-cameras.png)
+
+---
+
+### Step 3: Headless test capture (recommended)
+
+On a headless Pi (SSH-only), `rpicam-hello` may report “Preview window unavailable”
+because there is no display attached. That’s normal.
+
+Instead, capture a quick test image:
+
+~~~bash
+rpicam-still -n -t 1000 -o test.jpg
+~~~
+
+Confirm the file was created:
+
+~~~bash
+ls -lh test.jpg
+~~~
+
+If `test.jpg` exists and has a non-zero size, the camera is working.
+
+![Terminal output confirming test.jpg was created](docs/images/09-rpicam-still-confirmation.png)
+
+By default, `test.jpg` is saved in your home folder (for example: `/home/allsky/`).
+
+---
+
+### Notes about warnings (safe to ignore)
+
+You may see warnings about “static properties” or “unverified defaults”. If the camera is detected and an image is successfully captured, these warnings can safely be ignored.
+
+---
+
+### If the camera is not detected
+
+If `rpicam-hello --list-cameras` shows **no cameras found**:
+
+1. Power down the Pi
+2. Reseat the ribbon cable carefully
+3. Double-check orientation
+4. Boot again and retry the command
+
+If it still isn’t detected, stop here and troubleshoot before continuing.
+
+---
+
+## What we intentionally did *not* do yet
+
+- ❌ Adjust camera tuning
+- ❌ Change exposure or gain
+- ❌ Configure indi-allsky
+- ❌ Leave test images running
+
+All of that comes later.
+
+---
+
 ## Next step
 
-**Camera verification (libcamera)** — up next.
+If the camera is detected and `test.jpg` is created successfully:
+
+👉 **indi-allsky installation**
