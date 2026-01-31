@@ -175,3 +175,115 @@ If you’re following along at home:
 - you’re not expected to know Linux
 - copy/paste is encouraged
 - curiosity > perfection
+
+---
+
+## First boot checklist
+
+This section confirms that your Raspberry Pi:
+
+- boots correctly
+- is reachable over the network
+- is actually 64-bit
+- didn’t quietly betray you 😄
+
+We’ll keep this short and calm.  
+No camera yet. No indi-allsky yet.
+
+---
+
+### Step 1: Insert the SD card and power on
+
+1. Insert the microSD card into the Raspberry Pi
+2. Connect:
+   - power
+   - Ethernet **or** make sure Wi-Fi is in range
+3. Power it on
+
+Give it **30–60 seconds**. Headless boots take a moment.
+
+---
+
+### Step 2: Connect via SSH
+
+From your computer, open a terminal and run:
+
+~~~bash
+ssh allsky@indi-allsky-pi4-ir.local
+~~~
+
+If `.local` doesn’t work, try connecting via the Pi’s IP address instead  
+(check your router or use `arp -a`).
+
+The first time you connect, you may see a message like this:
+
+~~~
+The authenticity of host 'indi-allsky-pi4-ir.local' can't be established.
+Are you sure you want to continue connecting?
+~~~
+
+Type:
+
+~~~
+yes
+~~~
+
+Then enter the password you set in Raspberry Pi Imager.
+
+If you land at a prompt like:
+
+~~~
+allsky@indi-allsky-pi4-ir:~ $
+~~~
+
+You’re in. 🎉
+
+---
+
+### Step 3: Confirm the OS is 64-bit
+
+Run:
+
+~~~bash
+uname -m
+~~~
+
+You should see:
+
+~~~
+aarch64
+~~~
+
+---
+
+### Step 4: Update the system
+
+~~~bash
+sudo apt update
+sudo apt full-upgrade -y
+~~~
+
+Reboot when finished:
+
+~~~bash
+sudo reboot
+~~~
+
+Reconnect via SSH after about a minute.
+
+---
+
+### Step 5: Pause and celebrate
+
+At this point:
+
+- the Pi boots successfully
+- SSH access works
+- the OS is confirmed 64-bit
+- naming is consistent with this guide
+
+---
+
+## Next step
+
+**Camera verification (libcamera)** — up next.
