@@ -215,6 +215,11 @@ ssh allsky@indi-allsky-pi4-ir.local
 If `.local` doesn’t work, try connecting via the Pi’s IP address instead  
 (check your router or use `arp -a`).
 
+> **If your first SSH attempt times out**
+>  
+> Don’t panic. On first boot, the Raspberry Pi may still be finishing setup.
+> Wait 30–60 seconds and try again — this is very common.
+
 The first time you connect, you may see a message like this:
 
 ~~~
