@@ -43,6 +43,12 @@ We’ll start by flashing Raspberry Pi OS Lite (64-bit) to a microSD card using 
 
 Even if you’ve done this before, it’s worth slowing down here — a couple of small choices make life much easier later.
 
+> **Note on Raspberry Pi Imager versions**
+>  
+> Raspberry Pi Imager’s layout changes occasionally between releases.
+> This guide uses Raspberry Pi Imager 2.x — if your buttons are in slightly
+> different places, that’s okay. The *option names* are what matter.
+
 ---
 
 ### What you’ll need
@@ -57,98 +63,107 @@ https://www.raspberrypi.com/software/
 
 ---
 
-### Step 1: Choose the OS
+### Step 1: Select your Raspberry Pi device
 
-Open Raspberry Pi Imager and select:
+When Imager opens, you’ll first be asked which Raspberry Pi you’re using.
 
-- **Operating System**
-  - Raspberry Pi OS (other)
-  - **Raspberry Pi OS Lite (64-bit)**
+Select:
 
-📸 **Screenshot moment**  
-Capture: OS selection screen  
-Make sure it shows: “Raspberry Pi OS Lite (64-bit)”  
-Suggested filename: `01-imager-os-selection.png`
+- **Raspberry Pi 4**
 
-Why Lite + 64-bit?
-- No desktop overhead
-- Better performance
-- Better Python support for indi-allsky
+![Raspberry Pi 4 device selection](docs/images/01-imager-device-pi4.png)
+
+This ensures Imager shows OS options that are compatible with the Pi 4.
 
 ---
 
-### Step 2: Choose storage
+### Step 2: Choose the OS category
 
-Select your microSD card.
+Next, select:
 
-If you have more than one drive connected, double-check this step —
-Imager will overwrite whatever you select.
+- **Raspberry Pi OS (other)**
 
-(No screenshot needed here unless you want one.)
+![Raspberry Pi OS (other) category](docs/images/02-imager-os-category.png)
 
----
-
-### Step 3: Advanced settings (important)
-
-Click the ⚙️ **gear icon** (or press `Cmd + Shift + X` / `Ctrl + Shift + X`).
-
-Set the following:
-
-- **Hostname**
-  - Example: `allsky-pi4-ir`
-- **Enable SSH**
-  - Check “Enable SSH”
-  - Password authentication is fine
-- **Set username and password**
-  - Pick something you’ll remember
-- **Configure wireless LAN**
-  - If using Wi-Fi, enter your network details
-- **Set locale settings**
-  - Time zone (important for sky data!)
-  - Keyboard layout
-
-📸 **Screenshot moment**  
-Capture: Advanced settings screen  
-Make sure it shows: hostname + SSH enabled  
-Suggested filename: `02-imager-advanced-settings.png`
-
-Don’t worry, you can change all of this later if needed.
+This is where the Lite (64-bit) images live.
 
 ---
 
-### Step 4: Write the card
+### Step 3: Choose Raspberry Pi OS Lite (64-bit)
 
-Click **Write** and let Imager do its thing.
-
-This usually takes a few minutes.
-
-📸 **Optional screenshot moment**  
-Capture: “Writing image” or “Write complete” screen  
-Suggested filename: `03-imager-write-complete.png`
-
-When it’s done, safely eject the microSD card.
-
----
-
-## OS choice
+From the list of available OS images, select:
 
 - **Raspberry Pi OS Lite (64-bit)**
 
-Why:
-- better performance
-- better Python support
-- fewer surprises with indi-allsky
+![Raspberry Pi OS Lite (64-bit) selected](docs/images/03-imager-os-lite-64bit.png)
+
+Why Lite + 64-bit?
+
+- No desktop overhead
+- Better performance
+- Better Python support (important for indi-allsky)
 
 ---
 
-## Hostname convention
+### Step 4: Choose storage
 
-To avoid confusion with other Raspberry Pis:
+Select your microSD card.
 
-- **This build (Pi 4)**: `indi-allsky-pi4-ir-wide`
-- **Future build (Pi 5)**: `indi-allsky-pi5-wide` (not yet covered here)
+If you have more than one drive connected, double-check this step. 
+Imager will overwrite whatever you select.
 
-You can change hostnames later — no reflashing required.
+---
+
+### Step 5: Customisation settings (important)
+
+Imager will now walk you through several customisation screens.
+These settings make a headless setup much easier.
+
+#### Hostname
+
+Set a clear, descriptive hostname:
+
+- Example: `indi-allsky-pi4-ir`
+
+![Hostname setting](docs/images/04-imager-hostname.png)
+
+#### Username
+
+Create a non-personal user account:
+
+- Example: `allsky`
+
+![Username setting](docs/images/05-imager-username.png)
+
+#### Wi-Fi
+
+If you plan to use Wi-Fi, enter your network details.
+
+In screenshots, we use a placeholder network name.
+
+![Wi-Fi configuration](docs/images/06-imager-wifi.png)
+
+> Replace `ExampleWiFi` with the name of your own network.
+
+#### Enable SSH
+
+Enable SSH and choose **password authentication**.
+
+![SSH enabled](docs/images/07-imager-ssh-enabled.png)
+
+SSH is required to access the Pi remotely without a keyboard or monitor.
+
+You can change all of these settings later — no reflashing required.
+
+You may also see localisation options (time zone and keyboard layout). These are worth setting correctly, but they don’t affect the install process.
+
+---
+
+### Step 6: Write the card
+
+Click **Write** and let Imager do its thing.
+
+This usually takes a few minutes. When it’s done, safely eject the microSD card.
 
 ---
 
