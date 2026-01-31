@@ -216,7 +216,7 @@ If `.local` doesn’t work, try connecting via the Pi’s IP address instead (ch
 
 > **If your first SSH attempt times out**
 >  
-> That’s okay. On first boot, the Raspberry Pi may still be finishing setup.
+> That’s okay. On first boot, the Raspberry Pi may still be finishing setup.  
 > Wait a moment and try again.
 
 The first time you connect, you may see a message like this:
