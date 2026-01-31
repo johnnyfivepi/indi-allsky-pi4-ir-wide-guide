@@ -212,8 +212,7 @@ From your computer, open a terminal and run:
 ssh allsky@indi-allsky-pi4-ir.local
 ~~~
 
-If `.local` doesn’t work, try connecting via the Pi’s IP address instead  
-(check your router or use `arp -a`).
+If `.local` doesn’t work, try connecting via the Pi’s IP address instead (check your router or use `arp -a`).
 
 > **If your first SSH attempt times out**
 >  
