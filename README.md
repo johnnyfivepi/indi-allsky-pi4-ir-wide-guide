@@ -12,6 +12,21 @@ This is written for curious hobbyists *and* technical folks. If something feels 
 
 ---
 
+## What we’ll cover
+
+- Hardware
+- OS + Raspberry Pi Imager settings
+- First boot checklist
+- Camera verification (libcamera)
+- indi-allsky installation
+- Web UI + first light
+- Keograms & star trails
+- Storage & retention
+- Troubleshooting
+- Roadmap (Pi 5 variant later)
+
+---
+
 ## Hardware used
 
 - Raspberry Pi 4 Model B  
