@@ -35,6 +35,14 @@ This is written for curious hobbyists *and* technical folks. If something feels 
 - Stable power supply  
 - Outdoor enclosure (optional, later)
 
+> **Note on naming**
+>
+> Raspberry Pi refers to this camera as the *Camera Module 3 Wide NoIR*
+> (meaning it has no infrared filter).
+>  
+> In this guide, we sometimes shorten this to “IR” to describe its function
+> (infrared-sensitive). Both refer to the same camera.
+
 ---
 
 ## OS + Raspberry Pi Imager settings
@@ -58,7 +66,7 @@ Even if you’ve done this before, it’s worth slowing down here — a couple o
 - A microSD card reader
 - Raspberry Pi Imager (free)
 
-Download Raspberry Pi Imager from:
+Download Raspberry Pi Imager from:  
 https://www.raspberrypi.com/software/
 
 ---
@@ -89,19 +97,37 @@ This is where the Lite (64-bit) images live.
 
 ---
 
-### Step 3: Choose Raspberry Pi OS Lite (64-bit)
+### Step 3: Choose Raspberry Pi OS **(Legacy, 64-bit) Lite**
 
 From the list of available OS images, select:
 
-- **Raspberry Pi OS Lite (64-bit)**
+- **Raspberry Pi OS (Legacy, 64-bit) Lite**
 
-![Raspberry Pi OS Lite (64-bit) selected](docs/images/03-imager-os-lite-64bit.png)
+![Raspberry Pi OS (Legacy, 64-bit) Lite selected](docs/images/03-imager-os-lite-64bit.png)
 
-Why Lite + 64-bit?
+> ⚠️ **Important: choose “Legacy” on purpose**
+>
+> Raspberry Pi Imager may also show a newer **Raspberry Pi OS Lite (64-bit)** option *without* the word “Legacy”.
+> That newer option is based on **Debian 13 (Trixie)**.
+>
+> While Debian 13 is newer, **indi-allsky does not currently provide prebuilt INDI packages for it**.
+> Using it requires manually compiling INDI, which adds complexity and time.
+>
+> To keep this guide beginner-friendly and predictable, we intentionally use  
+> **Debian 12 (Bookworm)** via the **Legacy** option.
+
+#### Why Lite + 64-bit?
 
 - No desktop overhead
-- Better performance
-- Better Python support (important for indi-allsky)
+- Better performance on a headless Pi
+- Better Python compatibility
+- Fully supported by indi-allsky’s setup scripts
+
+> 💡 **Mental model**
+>
+> Think of **“Legacy”** here as **“stable and well-supported”**, not “outdated”.
+
+Choosing this option avoids extra build steps and makes the installation much smoother.
 
 ---
 
