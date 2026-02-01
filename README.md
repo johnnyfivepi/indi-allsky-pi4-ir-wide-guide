@@ -113,8 +113,7 @@ From the list of available OS images, select:
 > While Debian 13 is newer, **indi-allsky does not currently provide prebuilt INDI packages for it**.
 > Using it requires manually compiling INDI, which adds complexity and time.
 >
-> To keep this guide beginner-friendly and predictable, we intentionally use  
-> **Debian 12 (Bookworm)** via the **Legacy** option.
+> To keep this guide beginner-friendly and predictable, we intentionally use **Debian 12 (Bookworm)** via the **Legacy** option.
 
 #### Why Lite + 64-bit?
 
@@ -324,13 +323,23 @@ Before installing indi-allsky, we want to confirm that:
 
 This step is about confidence, not perfection.
 
-> **Command name note (modern Raspberry Pi OS)**
+> **Command name note (Raspberry Pi OS Bookworm and newer)**
 >
 > On current Raspberry Pi OS releases, the camera demo tools are named
 > `rpicam-*` (for example, `rpicam-hello` and `rpicam-still`).
 >
-> Older guides may refer to `libcamera-*` commands — they refer to the same
-> underlying camera stack.
+> Older guides may refer to `libcamera-*` commands. These use the same
+> underlying camera stack, but the `libcamera-*` command names have been
+> deprecated on Raspberry Pi OS.
+>
+> **For this guide, always use the `rpicam-*` commands.**
+
+> **Note on camera tools**
+>
+> On Raspberry Pi OS Bookworm, the `rpicam` tools are typically installed by default.
+>  
+> We still verify them here so camera issues are caught early, before introducing
+> indi-allsky into the mix.
 
 ---
 
